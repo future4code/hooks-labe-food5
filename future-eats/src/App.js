@@ -1,13 +1,15 @@
-import logo from './logo.svg';
-import Login from "./Pages/Login/Login"
-import Cadastro from "./Pages/Cadastro/Cadastro"
-import  MeuEndereço  from "./Pages/MeuEndereço/MeuEndereço"
+import logo from "./logo.svg";
+import Login from "./Pages/Login/Login";
+import Cadastro from "./Pages/Cadastro/Cadastro";
+import MeuEndereço from "./Pages/MeuEndereço/MeuEndereço";
+import Router from "./Router/Router";
 
-
-const App=()=>{
+const App = () => {
   return (
-    <Login/>
-  )
-}
+    <div>
+      <Router />
+    </div>
+  );
+};
 
 export default App;
