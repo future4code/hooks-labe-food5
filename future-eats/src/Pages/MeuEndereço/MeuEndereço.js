@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { TextField } from "@mui/material";
+import photo from "../Login/photo.PNG"
 
 const Button=styled.button`
   background-color: mediumseagreen; 
@@ -16,10 +17,23 @@ const Button=styled.button`
   cursor: pointer;
 
 `
-
+const Caixa=styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+`
+const Imagenzinha=styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+ `
 const MeuEndereço=()=>{
+
     return (
-            <div>
+            <Caixa>
+              <Imagenzinha>
+                <img src={photo} />
+              </Imagenzinha>
               <div> 
                 <TextField 
                 name="Logradouro"
@@ -63,8 +77,8 @@ const MeuEndereço=()=>{
                 </TextField>
               </div>
               <Button>Salvar</Button>
-           </div>
+           </Caixa>
     )
 }
 
-export default MeuEndereço
+export default MeuEndereço;

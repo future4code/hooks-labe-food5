@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components"
 import { TextField } from "@mui/material";
+import photo from "../Login/photo.PNG"
 
 const Caixa=styled.div`
 display: grid;
@@ -27,6 +28,24 @@ const Button=styled.button`
   cursor: pointer;
 
 `
+const Caixinha=styled.div `
+display: flex;
+align-items: center;
+justify-content: center;
+`
+const Imagenzinha=styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+&:hover{
+  transform: scale(1.5);
+  
+}
+ 
+`
+
+
+
 
 const Login=()=>{
   const [nome,setNome]=useState("")
@@ -38,22 +57,30 @@ const Login=()=>{
    const mudarSenha=(event)=>{
     setSenha(event.target.value)
    }
-
-
-   axios.post
-   ("https://us-central1-missao-newton.cloudfunctions.net/futureEatsC/login",{
-
-   }).then((rest)=>{
-    
-   }).catch((erro)=>{
-    console.log(erro)
-   })
+   
+   const logando =()=>{
+   console.log(nome,senha)
+    const URL="https://us-central1-missao-newton.cloudfunctions.net/futureEatsC/login"
+    const body={
+      email:nome,
+      password:senha
+    }
+    axios.post(URL,body)
+    .then((res)=>{
+      console.log(res)
+    }).catch((erro)=>{
+      alert("tente de novo")
+    })
+   }
+  
 
 
 
     return (
             <Caixa>
-              
+              <Imagenzinha>
+                <img src={photo} />
+              </Imagenzinha>
               <Logotipo> <p>Entrar</p></Logotipo>
              <div>
              <TextField
@@ -61,18 +88,23 @@ const Login=()=>{
              placeholder="email@email.com"
              label="E-email*"
              fullWidth
+             onChange={event=> mudarNome(event)} //memorizar
+             value={nome}
              ></TextField>
              <TextField 
              name="Senha"
              placeholder="Minimo 6 caractere"
              label="Senha*"
-             fullWidth>
+             fullWidth
+             onChange={event =>mudarSenha(event)}
+             value={senha}>
              </TextField>
              </div>
-             <Button>Entrar</Button>
+             <Button onClick={()=>logando()}>Entrar</Button>
              <br/>
-             <p>Não Possui Cadastro ? <a href=''>Clique Aqui</a>  </p> 
-              
+             <Caixinha>
+             <p>Não Possui Cadastro ? <a href='Cadastro'>Clique Aqui</a>  </p> 
+             </Caixinha>
              
            </Caixa>
     )
