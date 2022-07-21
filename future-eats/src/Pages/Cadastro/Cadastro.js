@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { TextField } from "@mui/material";
+import photo from "../Login/photo.PNG"
 
 const Button=styled.button`
   background-color: mediumseagreen; 
@@ -16,10 +17,28 @@ const Button=styled.button`
   cursor: pointer;
 
 `
+const Caixa=styled.div`
+display: grid;
+justify-content: center;
+padding: 75px;
+`
+const Imagenzinha=styled.div`
+display: flex;
+align-items: center;
+justify-content: center;
+ `
 
 const Cadastro=()=>{
+    // const[Nome,setNome]=useState("")
+    // const[email,setEmail]=useState("")
+    // const[CPF,setCPF]=useState("")
+    // const[senha,setSenha]=useState("")
+    // const[senha2,setSenha2]=useState("")
     return (
-        <div>
+        <Caixa>
+            <Imagenzinha>
+                <img src={photo} />
+              </Imagenzinha>
             <div>
             <h2>Cadastrar</h2>
             <div>
@@ -59,7 +78,7 @@ const Cadastro=()=>{
             </div>
             <div><Button>Criar</Button></div>
             </div>
-        </div>
+        </Caixa>
     )
 }
 export default Cadastro;
