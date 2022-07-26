@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { TextField } from "@mui/material";
 import photo from "../Login/photo.PNG"
+import axios from "axios"
 
 const Button=styled.button`
   background-color: mediumseagreen; 
@@ -29,11 +30,42 @@ justify-content: center;
  `
 
 const Cadastro=()=>{
-    // const[Nome,setNome]=useState("")
-    // const[email,setEmail]=useState("")
-    // const[CPF,setCPF]=useState("")
-    // const[senha,setSenha]=useState("")
-    // const[senha2,setSenha2]=useState("")
+    const[Nome,setNome]=useState("")
+    const[email,setEmail]=useState("")
+    const[CPF,setCPF]=useState("")
+    const[senha,setSenha]=useState("")
+    
+    const mudarNome=(event)=>{
+        setNome(event.target.value)
+    }
+    const mudarEmail=(event)=>{
+        setEmail(event.target.value)
+    }
+    const mudarCPF=(event)=>{
+        setCPF(event.target.value)
+
+    }
+    const mudarSenha=(event)=>{
+        setSenha(event.target.value)
+    }
+
+    const cadastro=()=>{
+        const URL="https://us-central1-missao-newton.cloudfunctions.net/futureEatsC/signup"
+        const body={
+            name:Nome,
+            email:email,
+            cpf:CPF,
+            password:senha
+        }
+        axios.post(URL,body)
+        .then((res)=>{
+            alert("Sucesso")
+            
+        }).catch((res)=>{
+            alert("invalido")
+        })
+    }
+
     return (
         <Caixa>
             <Imagenzinha>
@@ -43,40 +75,49 @@ const Cadastro=()=>{
             <h2>Cadastrar</h2>
             <div>
                 <TextField
-                name="Nome"
+                name="nome"
                 placeholder="Nome e Sobrenome"
-                label="Nome">
+                label="Nome*"
+                onChange={event=>mudarNome(event)}
+                value={Nome}>
+
                 </TextField>
             </div>
             <div>
                 <TextField
-                name="E-mail"
+                name="e-mail"
                 placeholder="email@email.com"
-                label="E-mail">
+                label="E-mail*"
+                value={email}
+                onChange={event=>mudarEmail(event)}>
                 </TextField>
             </div>
             <div>
                 <TextField
-                name="CPF"
+                name="cPF"
                 placeholder="000.000.000-00"
-                label="CPF">
+                label="CPF*"
+                value={CPF}
+                onChange={event=>mudarCPF(event)}>
                 </TextField>
             </div>
             <div>
                 <TextField
-                name="Senha"
+                name="senha"
                 placeholder="Mínimo 6 caract"
-                label="Senha">
+                label="Senha*"
+                value={senha}
+                onChange={event=>mudarSenha(event)}>
                 </TextField>
             </div>
             <div>
                 <TextField
-                name="Confirma"
+                name="confirma"
                 placeholder="Confirma Senha Anterior"
-                label="Confirma">
+                label="Confirma*">
                 </TextField>
             </div>
-            <div><Button>Criar</Button></div>
+            <div><Button onClick={()=>cadastro()}>Criar</Button></div>
             </div>
         </Caixa>
     )

@@ -27,7 +27,14 @@ display: flex;
 align-items: center;
 justify-content: center;
  `
-const MeuEndereço=()=>{
+ const MeuEndereço=()=>{
+//   const[logradouro,setLogradouro]=UseState("")
+//   const[numero,setNumero]=UseState("")
+//   const[complemento,setComplemento]=UseState("")
+//   const[bairro,setBairro]=UseState("")
+//   const[cidade,setCidade]=UseState("")
+//   const[estado,setEstado]=UseState("")
+
 
     return (
             <Caixa>
