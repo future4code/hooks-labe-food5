@@ -4,8 +4,8 @@ export const Cadastro=(navigate)=>{
     navigate("/Cadastro")
 }
 
-export const MeuEndereço=(navigate)=>{
-    navigate("/MeuEndereço")
+export const MeuEndereco=(navigate)=>{
+    navigate("/MeuEndereco")
 }
 export const Login=(navigate)=>{
     navigate("/Login")
