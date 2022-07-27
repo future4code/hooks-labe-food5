@@ -65,11 +65,19 @@ const Login=()=>{
       email:nome,
       password:senha
     }
-    axios.post(URL,body)
+    const  header={
+      headers:{
+        auth:window.localStorage.getItem("token")
+      }
+    }
+    axios.post(URL,header,body)
+    
     .then((res)=>{
-      console.log(res)
-    }).catch((erro)=>{
+      alert("Parabens por cadastra seu endereço")
+      console.log(res.data)
+    }).cath((erro)=>{
       alert("tente de novo")
+      console.log(erro)
     })
    }
   

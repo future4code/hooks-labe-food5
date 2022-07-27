@@ -50,16 +50,23 @@ const Cadastro=()=>{
     }
 
     const cadastro=()=>{
+        console.log(cadastro)
         const URL="https://us-central1-missao-newton.cloudfunctions.net/futureEatsC/signup"
+        const  header={
+            headers:{
+              auth:window.localStorage.getItem("token")
+            }
+          }
         const body={
             name:Nome,
             email:email,
             cpf:CPF,
             password:senha
         }
-        axios.post(URL,body)
+        axios.post(URL,body,header)
         .then((res)=>{
             alert("Sucesso")
+            console.log(res.data.token)
             
         }).catch((res)=>{
             alert("invalido")
