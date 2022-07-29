@@ -11,6 +11,8 @@ const MenuRow = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 16px;
+  width: calc(100vw - 80px);
+  overflow: scroll;
 `;
 
 const ItemRow = styled.div`
@@ -65,6 +67,7 @@ const Home = () => {
   const [restaurantes, setRestaurantes] = useState([]);
   const [categorias, setCategorias] = useState([]);
   const [categoriaSelecianada, setCategoriaSelecionada] = useState();
+  const [searchInputValue, setSearchInputValue] = useState("");
 
   useEffect(() => {
     if (!window.localStorage.getItem("token")) {
@@ -97,8 +100,20 @@ const Home = () => {
     setCategoriaSelecionada(categoria);
   };
 
+  const handleSearchInputChange = (event) => {
+    setSearchInputValue(event.target.value);
+  };
+
   const renderRestaurantCard = (restaurante) => {
     if (categoriaSelecianada && restaurante.category !== categoriaSelecianada) {
+      return;
+    }
+
+    if (
+      searchInputValue &&
+      restaurante.name.toLowerCase().indexOf(searchInputValue.toLowerCase()) ===
+        -1
+    ) {
       return;
     }
 
@@ -129,8 +144,10 @@ const Home = () => {
         </TextLogo>
 
         <OutlinedInput
+          onChange={handleSearchInputChange}
           style={{ width: "100%" }}
           placeholder="Restaurante"
+          value={searchInputValue}
           startAdornment={
             <InputAdornment position="start">
               <SearchIcon />
@@ -139,19 +156,21 @@ const Home = () => {
         ></OutlinedInput>
 
         <MenuRow>
-          {categorias.map((categoria) => {
-            return (
-              <ItemRow
-                onClick={() => handleSelectedCategory(categoria)}
-                style={{
-                  color:
-                    categoriaSelecianada === categoria ? "#5CB646" : "black",
-                }}
-              >
-                {categoria}
-              </ItemRow>
-            );
-          })}
+          <div style={{ display: "flex" }}>
+            {categorias.map((categoria) => {
+              return (
+                <ItemRow
+                  onClick={() => handleSelectedCategory(categoria)}
+                  style={{
+                    color:
+                      categoriaSelecianada === categoria ? "#5CB646" : "black",
+                  }}
+                >
+                  {categoria}
+                </ItemRow>
+              );
+            })}
+          </div>
         </MenuRow>
 
         <div>
