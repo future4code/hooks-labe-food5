@@ -6,7 +6,6 @@ import { getProfile, placeOrder } from '../../services/services';
 import * as C from './styled'
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@material-ui/core';
 import useProtectedPages from '../../hooks/useProtectedPages';
-import { Carrinho } from '../../Router/Navigate';
 
 
 const CartPage = () => {
@@ -121,4 +120,4 @@ const CartPage = () => {
     )
 }
 
-export default Carrinho
+export default CartPage
