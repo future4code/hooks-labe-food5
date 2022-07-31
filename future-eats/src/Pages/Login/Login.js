@@ -89,7 +89,7 @@ const Login = () => {
         <TextField
           name="email"
           placeholder="email@email.com"
-          label="E-email*"
+          label="E-mail*"
           fullWidth
           onChange={(event) => mudarNome(event)} //memorizar
           value={nome}
@@ -107,7 +107,7 @@ const Login = () => {
       <br />
       <Caixinha>
         <p>
-          Não Possui Cadastro ? <a href="Cadastro">Clique Aqui</a>{" "}
+          Não Possui Cadastro? <a href="Cadastro">Clique Aqui</a>{" "}
         </p>
       </Caixinha>
     </Caixa>
