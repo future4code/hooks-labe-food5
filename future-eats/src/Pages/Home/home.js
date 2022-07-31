@@ -55,12 +55,6 @@ const InfoCard = styled.div`
 const InfoNameRestaurant = styled.div`
   color: #5cb646;
 `;
-const config = {
-  headers: {
-    auth: window.localStorage.getItem("token"),
-    "Content-Type": "application/json",
-  },
-};
 
 const Home = () => {
   const navigate = useNavigate();
@@ -70,18 +64,22 @@ const Home = () => {
   const [searchInputValue, setSearchInputValue] = useState("");
 
   useEffect(() => {
-    if (!window.localStorage.getItem("token")) {
+    if (!localStorage.getItem("token")) {
       navigate("/login");
+    } else {
+      getRestaurants();
     }
   }, []);
 
-  useEffect(() => {
-    getRestaurants();
-  }, []);
-
   const getRestaurants = () => {
-    const URL =
-      "https://us-central1-missao-newton.cloudfunctions.net/futureEatsC/restaurants";
+    const config = {
+      headers: {
+        auth: window.localStorage.getItem("token"),
+      },
+    };
+
+    const URL = `https://us-central1-missao-newton.cloudfunctions.net/futureEatsC/restaurants`;
+
     axios
       .get(URL, config)
       .then((res) => {

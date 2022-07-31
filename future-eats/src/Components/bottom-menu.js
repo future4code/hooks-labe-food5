@@ -15,7 +15,7 @@ const BottomNavigationContainer = styled.div`
 const BottomMenu = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location.pathname);
+
   return (
     <BottomNavigationContainer>
       <BottomNavigation>
