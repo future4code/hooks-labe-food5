@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { TextField } from "@mui/material";
 import photo from "../Login/photo.PNG"
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 
 const Button=styled.button`
   background-color: mediumseagreen; 
@@ -34,6 +35,7 @@ const Cadastro=()=>{
     const[email,setEmail]=useState("")
     const[CPF,setCPF]=useState("")
     const[senha,setSenha]=useState("")
+    const navigate = useNavigate();
     
     const mudarNome=(event)=>{
         setNome(event.target.value)
@@ -67,7 +69,7 @@ const Cadastro=()=>{
         .then((res)=>{
             alert("Sucesso")
             console.log(res.data.token)
-            
+            navigate("/meuendereco");
         }).catch((res)=>{
             alert("invalido")
         })

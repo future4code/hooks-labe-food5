@@ -107,9 +107,11 @@ const Login = () => {
       <br />
       <Caixinha>
         <p>
-          Não Possui Cadastro? <a href="Cadastro">Clique Aqui</a>{" "}
+
+          Não Possui Cadastro ? <a href="/Cadastro">Clique Aqui</a>{" "}
+
         </p>
-      </Caixinha>
+      </Caixinha> 
     </Caixa>
   );
 };
