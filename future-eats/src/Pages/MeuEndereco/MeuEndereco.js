@@ -82,8 +82,6 @@ const MeuEndereco = () => {
     axios
       .put(URL, body, header)
       .then((res) => {
-        alert("Sucesso , Agora pode podera Pedir sua Comida");
-
         window.localStorage.setItem("token", res.data.token);
         navigate("/");
       })
